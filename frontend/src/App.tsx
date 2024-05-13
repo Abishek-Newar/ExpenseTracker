@@ -1,7 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Auth from "./pages/Auth"
-import LAnding from "./modal/LAnding"
+
 import { RecoilRoot } from "recoil"
+import Landing from "./modal/Landing"
+import Auth from "./pages/Auth"
 
 function App() {
   
@@ -12,7 +13,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Auth />} />
-      <Route path="/landing" element={<LAnding />} />
+      <Route path="/landing" element={<Landing />} />
     </Routes>
     </BrowserRouter>
     </RecoilRoot>

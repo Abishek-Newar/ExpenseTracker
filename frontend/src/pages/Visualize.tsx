@@ -1,7 +1,8 @@
 
 const Visualize = () => {
   return (
-    <div>Visualize</div>
+    <>
+    </>
   )
 }
 
