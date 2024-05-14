@@ -5,6 +5,10 @@ import { ResponseType } from "../types"
 
 const Home = () => {
   const [transactions,setTransactions] = useState([])
+  const date: Date = new Date();
+  const  month:number = date.getMonth();
+  var months:string[]= ["January","February","March","April","May","June","July",
+            "August","September","October","November","December"];
   useEffect(()=>{
     async function serverCall(){
       const response = await axios("http://localhost:3000/expense/getexpense",{
@@ -16,11 +20,16 @@ const Home = () => {
     }
     serverCall()
   },[])
+  let total = 0;
+  transactions.forEach((item:ResponseType)=>{
+    total += item.money
+  })
   return (
     <div className="min-h-screen flex flex-col items-center bg-[#09090B] text-white">
     <Navbar />
     <div className="mt-[17vh]"></div>
-    <h1 className="text-5xl font-teko underline">Transactions</h1>
+    <h1 className="text-5xl font-teko">Transactions</h1>
+    <h2 className="font-teko text-3xl" >{months[month]} : <span className={`${total > 0 ? "text-green-500": "text-red-500"}`}>{total}</span> </h2>
     <div>
       <table className="table-fixed">
         <thead >
