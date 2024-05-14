@@ -2,8 +2,13 @@
 export default {
   content: ["./src/**/*.{html,js,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        chill: ['Cedarville Cursive', 'cursive'],
+        Madami: ["Madimi one", 'sans-serif']
+    },
   },
+},
   plugins: [],
 }
 
