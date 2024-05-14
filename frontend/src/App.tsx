@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import { RecoilRoot } from "recoil"
 import Landing from "./modal/Landing"
 import Auth from "./pages/Auth"
+import { Toaster } from "sonner"
 
 function App() {
   
@@ -16,6 +17,7 @@ function App() {
       <Route path="/landing" element={<Landing />} />
     </Routes>
     </BrowserRouter>
+    <Toaster />
     </RecoilRoot>
     </>
   )

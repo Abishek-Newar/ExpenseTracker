@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         chill: ['Cedarville Cursive', 'cursive'],
-        Madami: ["Madimi one", 'sans-serif']
+        Madami: ["Madimi one", 'sans-serif'],
+        teko: ["teko",'sans-serif']
     },
   },
 },

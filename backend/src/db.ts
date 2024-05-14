@@ -10,6 +10,7 @@ mongoose.connect(mongoURI)
 const expenseSchema = new mongoose.Schema({
     title: String,
     money: Number,
+    date: Date,
     userId: String
 })
 const userSchema = new mongoose.Schema({

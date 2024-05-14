@@ -14,8 +14,9 @@ const Auth = () => {
   })
   async function Authentication(){
     try {
-      await axios.post(`http://localhost:3000/user/${type}`,formData)
+      const response = await axios.post(`http://localhost:3000/user/${type}`,formData)
       toast('Login Sucessfull')
+      localStorage.setItem("token",response.data.token)
       setTimeout(() => {
         navigate("/landing")
       }, 2000);
@@ -51,7 +52,6 @@ const Auth = () => {
         }
       </div>
     </div>
-    <Toaster />
     </>
   )
 }
@@ -62,7 +62,8 @@ function LabeledInput({type,placeholder,id,onChange}:labelType){
       <h1 className="text-lg font-semibold">{id}</h1>
       <input
       className="w-full h-12 rounded-lg border px-4"
-       type={type} placeholder={placeholder} id={id} onChange={onChange} />
+       type={type} placeholder={placeholder} id={id} onChange={onChange} required />
+       
     </label>
   )
 }

@@ -6,7 +6,13 @@ export interface labelType{
     id: string,
     onChange: ChangeEventHandler<HTMLInputElement>
   }
-
+export interface ResponseType{
+  _id: string,
+  title: string,
+  money: number,
+  date: string,
+  userId: string
+}
 export interface ButtonType{
   name: string
   onClick: (e:any)=>void
