@@ -26,11 +26,11 @@ const Auth = () => {
   }
   return (
     <>
-    <div className="min-h-screen bg-slate-200  flex items-center justify-center">
-      <div className="border border-black w-[450px] flex flex-col  gap-6 p-6 rounded-lg">
+    <div className="min-h-screen bg-[#09090B] flex items-center justify-center">
+      <form className="border  w-[450px] flex flex-col  gap-6 p-6 rounded-lg text-white font-Madami " >
         {
           type === 'signin'?
-          <h1 className="text-3xl font-bold text-center">SIGN IN</h1>:
+          <h1 className="text-3xl font-bold  text-center">SIGN IN</h1>:
           <h1 className="text-3xl font-bold text-center">SIGN UP</h1>
         }
         {
@@ -50,7 +50,7 @@ const Auth = () => {
           <p className="text-center select-none">Don't have a Acoount? <span className="underline cursor-pointer select-none " onClick={()=>setType("signup")}>Sign up</span></p>:
           <p className="text-center select-none">Already have a Acoount? <span className="underline cursor-pointer select-none " onClick={()=>setType("signin")}>Sign in</span></p>
         }
-      </div>
+      </form>
     </div>
     </>
   )
@@ -61,7 +61,7 @@ function LabeledInput({type,placeholder,id,onChange}:labelType){
     <label htmlFor={id}>
       <h1 className="text-lg font-semibold">{id}</h1>
       <input
-      className="w-full h-12 rounded-lg border px-4"
+      className="w-full h-9 rounded-lg border px-4"
        type={type} placeholder={placeholder} id={id} onChange={onChange} required />
        
     </label>
@@ -70,7 +70,7 @@ function LabeledInput({type,placeholder,id,onChange}:labelType){
 
 function Button({name,onClick}:ButtonType){
   return <>
-  <button onClick={onClick} className="h-12 bg-black text-white rounded-lg font-bold text-xl">{name}</button>
+  <button onClick={onClick} type="submit" className="h-10 bg-white text-black rounded-lg font-bold text-xl">{name}</button>
   </>
 }
 export default Auth

@@ -21,8 +21,11 @@ const Home = () => {
     serverCall()
   },[])
   let total = 0;
+  
   transactions.forEach((item:ResponseType)=>{
-    total += item.money
+    if(parseInt(item.date.slice(6,8)) === month+1){
+      total += item.money
+    }
   })
   return (
     <div className="min-h-screen flex flex-col items-center bg-[#09090B] text-white">
