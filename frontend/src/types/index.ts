@@ -18,3 +18,14 @@ export interface ButtonType{
   onClick: (e:any)=>void
 }
 
+interface PieChartData {
+  name: string;
+  value: number;
+}
+
+export interface PieChartProps {
+  data: PieChartData[];
+  width: number,
+  height: number;
+}
+

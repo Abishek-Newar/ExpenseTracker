@@ -2,9 +2,12 @@ import { useEffect, useState } from "react"
 import Navbar from "../components/Navbar"
 import axios from "axios"
 import { ResponseType } from "../types"
+import { useRecoilState } from "recoil"
+import { dataState } from "../config"
 
 const Home = () => {
   const [transactions,setTransactions] = useState([])
+  const [data,setData] = useRecoilState(dataState)
   const date: Date = new Date();
   const  month:number = date.getMonth();
   var months:string[]= ["January","February","March","April","May","June","July",
@@ -17,11 +20,11 @@ const Home = () => {
         }
       })
       setTransactions(response.data.expenses)
+      setData(response.data.expenses)
     }
     serverCall()
   },[])
   let total = 0;
-  
   transactions.forEach((item:ResponseType)=>{
     if(parseInt(item.date.slice(6,8)) === month+1){
       total += item.money

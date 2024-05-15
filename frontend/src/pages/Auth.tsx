@@ -12,26 +12,27 @@ const Auth = () => {
     email: '',
     password: ''
   })
-  async function Authentication(){
+  async function Authentication(e:any){
+    e.preventDefault()
     try {
       const response = await axios.post(`http://localhost:3000/user/${type}`,formData)
-      toast('Login Sucessfull')
+      toast.success('Login Sucessfull')
       localStorage.setItem("token",response.data.token)
       setTimeout(() => {
         navigate("/landing")
       }, 2000);
     } catch (error) {
-      alert("Enter Correct Password")
+      toast.error("Enter Correct Password")
     }
   }
   return (
     <>
     <div className="min-h-screen bg-[#09090B] flex items-center justify-center">
-      <form className="border  w-[450px] flex flex-col  gap-6 p-6 rounded-lg text-white font-Madami " >
+      <form className="border  w-[450px] flex flex-col  gap-6 p-6 rounded-lg  font-Madami " >
         {
           type === 'signin'?
-          <h1 className="text-3xl font-bold  text-center">SIGN IN</h1>:
-          <h1 className="text-3xl font-bold text-center">SIGN UP</h1>
+          <h1 className="text-3xl font-bold  text-center text-white">SIGN IN</h1>:
+          <h1 className="text-3xl font-bold text-center text-white">SIGN UP</h1>
         }
         {
           type === 'signup'?
@@ -42,13 +43,13 @@ const Auth = () => {
         <LabeledInput type="password" placeholder="******" id="Password" onChange={(e)=>{setFormData({...formData,password: e.target.value})}} />
         {
           type === 'signin'?
-          <Button onClick={Authentication}  name="SIGN IN" /> :
-          <Button onClick={Authentication} name="SIGN UP" />
+          <Button onClick={(e)=>{Authentication(e)}}  name="SIGN IN" /> :
+          <Button onClick={(e)=>{Authentication(e)}} name="SIGN UP" />
         }
         {
           type === 'signin'?
-          <p className="text-center select-none">Don't have a Acoount? <span className="underline cursor-pointer select-none " onClick={()=>setType("signup")}>Sign up</span></p>:
-          <p className="text-center select-none">Already have a Acoount? <span className="underline cursor-pointer select-none " onClick={()=>setType("signin")}>Sign in</span></p>
+          <p className="text-center select-none text-white">Don't have a Acoount? <span className="underline cursor-pointer select-none " onClick={()=>setType("signup")}>Sign up</span></p>:
+          <p className="text-center select-none text-white">Already have a Acoount? <span className="underline cursor-pointer select-none " onClick={()=>setType("signin")}>Sign in</span></p>
         }
       </form>
     </div>
@@ -59,7 +60,7 @@ const Auth = () => {
 function LabeledInput({type,placeholder,id,onChange}:labelType){
   return(
     <label htmlFor={id}>
-      <h1 className="text-lg font-semibold">{id}</h1>
+      <h1 className="text-lg font-semibold text-white">{id}</h1>
       <input
       className="w-full h-9 rounded-lg border px-4"
        type={type} placeholder={placeholder} id={id} onChange={onChange} required />
