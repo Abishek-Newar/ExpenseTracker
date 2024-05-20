@@ -20,7 +20,7 @@ expenseRouter.post("/add",Auth,async(req:Request,res:Response)=>{
             title: body?.title,
             money: body?.money,
             userId: userIds,
-            date: Date.now()
+            date: body?.expenditureDate
         })
         res.json({msg: "added"})
     } catch (error) {

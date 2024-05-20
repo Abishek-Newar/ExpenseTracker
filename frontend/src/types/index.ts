@@ -29,3 +29,13 @@ export interface PieChartProps {
   height: number;
 }
 
+export interface ValuesPros{
+  Spend: number,
+  Earn: number
+}
+
+export interface PiePros{
+  values: ValuesPros,
+  title: string
+}
+

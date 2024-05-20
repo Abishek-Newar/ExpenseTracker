@@ -38,12 +38,14 @@ const Home = () => {
     <h2 className="font-teko text-3xl" >{months[month]} : <span className={`${total > 0 ? "text-green-500": "text-red-500"}`}>{total}</span> </h2>
     <div>
       <table className="table-fixed">
-        <thead >
+          <thead>
+          <tr>
           <th className="w-[100px]">S no.</th>
           <th className="w-[200px]">Date</th>
           <th className="w-[200px]">Transaction</th>
           <th className="w-[200px]">Amount</th>
-        </thead>
+          </tr>
+          </thead>
         <tbody>
           {
             transactions.map((item : ResponseType,index: number)=>(

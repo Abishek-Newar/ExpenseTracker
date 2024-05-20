@@ -1,9 +1,11 @@
 import { Pie } from "react-chartjs-2"
 import 'chartjs-plugin-datalabels';
 import { Chart, ArcElement } from 'chart.js';
+import { PiePros } from "../types";
 Chart.register(ArcElement);
 
-const PieCharts = ({values,title}) => {
+
+const PieCharts = ({values,title}:PiePros) => {
     const data = {
         labels: ["Spend","Earn"],
         datasets: [
@@ -13,6 +15,8 @@ const PieCharts = ({values,title}) => {
               backgroundColor: [
                 '#EF4444',
                 '#22C55E',
+                
+                
               ],
               borderColor: [
                 'rgba(255, 99, 132, 1)',
@@ -26,7 +30,11 @@ const PieCharts = ({values,title}) => {
   return (
     <div className="text-white mt-[17vh] flex flex-col gap-6 border rounded-md p-6 ">
         <div className="w-[450px]  h-[450px]">
-        <Pie data={data}  /> 
+        {
+          values.Earn === 0 && values.Spend === 0?
+          <div>NO SPEND OR EARNING TODAY</div>:
+          <Pie data={data}  /> 
+        }
         </div>
         <div className="flex items-center gap-10">
             <span className="flex items-center gap-1"><span className="w-3 h-2 bg-red-500 block"></span><span>Spend</span></span>

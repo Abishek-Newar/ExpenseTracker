@@ -4,7 +4,8 @@ type URI_type = string
 type Expenses_type = {
     title: string,
     money: number,
-    userId: string
+    userId: string,
+    expenditureDate: string
 } | undefined
 
 

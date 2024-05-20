@@ -12,6 +12,7 @@ const Add = () => {
     title: '',
     money: ''
   })
+  const [expenditureDate,setExpenditureDate] = useState("")
   const [moneyType,setMoneyType]  = useState("")
   async function handleClick(){
     let money: number = parseInt(formData.money)
@@ -20,7 +21,7 @@ const Add = () => {
     }
     let title:string = formData.title
     try {
-      await axios.post("http://localhost:3000/expense/add",{title,money},{
+      await axios.post("http://localhost:3000/expense/add",{title,money,expenditureDate},{
         headers:{
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -52,6 +53,7 @@ const Add = () => {
             <option value="earn">Earn</option>
           </select>
           </label>
+          <SmallLabeledInput type="date" placeholder="25-01-2024" id="Expenditure Date" onChange={(e)=>{setExpenditureDate(e.target.value)}} />
           <SmallLabeledInput type="number" placeholder="10000" id="Money" onChange={(e)=>{setFormData({...formData,money: e.target.value})}}  />
           <button onClick={handleClick} className="w-full h-10 bg-white/85 hover:bg-white transition-all ease-linear duration-300 text-black rounded-md">Add Expense</button>
         </div>
