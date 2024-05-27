@@ -3,7 +3,7 @@ import Navbar from "../components/Navbar"
 import axios from "axios"
 import { ResponseType } from "../types"
 import { useRecoilState } from "recoil"
-import { dataState } from "../config"
+import { dataState} from "../config"
 
 const Home = () => {
   const [transactions,setTransactions] = useState([])
@@ -19,8 +19,13 @@ const Home = () => {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
       })
-      setTransactions(response.data.expenses)
-      setData(response.data.expenses)
+      const sortedData = response.data.expenses.sort((a: ResponseType, b: ResponseType) => {
+        const dateA = new Date(a.date);
+        const dateB = new Date(b.date);
+        return dateB.getTime() - dateA.getTime();
+      });
+      setTransactions(sortedData)
+      setData(sortedData)
     }
     serverCall()
   },[])

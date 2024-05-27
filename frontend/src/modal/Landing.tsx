@@ -5,6 +5,7 @@ import Add from "../pages/Add"
 import Visualize from "../pages/Visualize"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import Insights from "../pages/Insights"
 
 const Landing = () => {
   const navigate = useNavigate()
@@ -17,6 +18,7 @@ const Landing = () => {
     if(page === 'home') return <Home />
     if(page === 'add') return <Add />
     if(page ==='visualize') return <Visualize /> 
+    if(page === 'insights') return <Insights />
   return (
     <div>LAnding</div>
   )

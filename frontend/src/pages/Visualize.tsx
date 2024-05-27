@@ -11,6 +11,8 @@ const Visualize = () => {
   const date = new Date();
   const month = date.getMonth() + 1
   const day = date.getDate()
+  const today = date.getDay()
+  console.log(today)
   const currentMonthExpenditure = data.filter((item:ResponseType)=>parseInt(item.date.slice(6,8))===month)
   const todayExpenditure = data.filter((item: ResponseType)=>parseInt(item.date.slice(6,8)) === month && (parseInt(item.date.slice(8,10)) === day))
   let spend = 0;
@@ -22,34 +24,26 @@ const Visualize = () => {
       }else{
         spend += item.money
       }
-       if(earn < 0){
-        earn = 0
-       }
-       else{
-        earn +=spend
-        if(earn < 0){
-          earn = 0
-         }
-         else{
-          earn += item.money
-         }
-       }
     })
+    if(spend < earn){
+      earn += spend
+    }else{
+      earn = 0
+    }
   }else{
     currentMonthExpenditure.forEach((item: ResponseType)=>{
       if(item.money >0){
         earn += item.money
       }else{
         spend += item.money
-        if(earn < 0){
-          earn = 0
-         }
-         else{
-          earn += item.money
-         }
       }
       
     })
+    if(spend < earn){
+      earn += spend
+    }else{
+      earn = 0
+    }
   }
   // if(earn < 0){
   //   earn = 0

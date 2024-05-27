@@ -1,8 +1,8 @@
-import { Pie } from "react-chartjs-2"
+import { Doughnut } from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
-import { Chart, ArcElement } from 'chart.js';
+import { Chart, ArcElement, Legend } from 'chart.js';
 import { PiePros } from "../types";
-Chart.register(ArcElement);
+Chart.register(ArcElement, Legend);
 
 
 const PieCharts = ({values,title}:PiePros) => {
@@ -26,6 +26,22 @@ const PieCharts = ({values,title}:PiePros) => {
             },
         ],
     }
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+          title:{
+              display: true,
+              text: "Monthly-Expenditure (Doughnut Chart)",
+          },
+        legend: {
+          display: true, // Set to false to disable the legend
+          position: 'bottom',
+        },
+        
+        
+      },
+    };
     
   return (
     <div className="text-white mt-[17vh] flex flex-col gap-6 border rounded-md p-6 ">
@@ -33,12 +49,8 @@ const PieCharts = ({values,title}:PiePros) => {
         {
           values.Earn === 0 && values.Spend === 0?
           <div>NO SPEND OR EARNING TODAY</div>:
-          <Pie data={data}  /> 
+          <Doughnut data={data} options={options} /> 
         }
-        </div>
-        <div className="flex items-center gap-10">
-            <span className="flex items-center gap-1"><span className="w-3 h-2 bg-red-500 block"></span><span>Spend</span></span>
-            <span className="flex items-center gap-1"><span className="w-3 h-3 bg-green-500 block"></span><span>Earn</span></span>
         </div>
         <div>
             <h1 className="text-center">{title}</h1>
