@@ -49,7 +49,7 @@ const PieCharts = ({values,title}:PiePros) => {
         {
           values.Earn === 0 && values.Spend === 0?
           <div>NO SPEND OR EARNING TODAY</div>:
-          <Doughnut data={data} options={options} /> 
+          <Doughnut data={data}  /> 
         }
         </div>
         <div>

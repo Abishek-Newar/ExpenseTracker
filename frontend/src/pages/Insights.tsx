@@ -1,7 +1,9 @@
 import { useRecoilState } from "recoil";
 import { dataState } from "../config";
-import { ResponseType } from "../types";
+import { Maps, ResponseType } from "../types";
 import Navbar from "../components/Navbar";
+import { LineChart } from "../components/LineChart";
+
 
 const Insights = () => {
     const date = new Date();
@@ -17,17 +19,17 @@ const Insights = () => {
     console.log(monthlyExpenditure)
     let tempMonth = month + 1
     let tempDay = day
-    const LineChartData:any = {}
+    let LineChartData:Maps = new Map()
     while(tempMonth>=month || (tempMonth === month && day >= tempDay)){
         let tempSpend = 0;
         data.forEach((item:ResponseType)=>{
             if((parseInt(item.date.slice(8,10)) === tempDay) && 
-               (parseInt(item.date.slice(6,8)) === tempMonth) &&
+               (parseInt(item.date.slice(6,8)) === tempMonth + 1) &&
                 item.money<0 ){
                 tempSpend += item.money
             }
         })
-        LineChartData[`${tempDay}`] = tempSpend
+        LineChartData.set(tempDay,Math.abs(tempSpend))
         if(tempDay === 1){
             tempDay = MonthLength[tempMonth-1]
             tempMonth--;
@@ -39,6 +41,9 @@ const Insights = () => {
   return (
     <div className="bg-black min-h-screen flex flex-col items-center">
         <Navbar />
+        <div className="h-[600px] w-[70%] mx-auto mt-[20vh] border">
+        <LineChart LineChartData={LineChartData} />
+        </div>
     </div>
   )
 }

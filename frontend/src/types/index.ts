@@ -38,4 +38,4 @@ export interface PiePros{
   values: ValuesPros,
   title: string
 }
-
+export type Maps = Map<number, number>;
