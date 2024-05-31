@@ -34,7 +34,7 @@ export function LineChart({LineChartData}:LineProps) {
   labels,
   datasets: [
     {
-      label: 'Dataset 1',
+      label: 'Last 30 Days Spends',
       data: LineData.reverse(),
       borderColor: 'rgb(53, 162, 235)',
       backgroundColor: 'rgba(53, 162, 235, 0.5)',

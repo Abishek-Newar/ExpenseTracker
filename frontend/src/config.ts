@@ -10,3 +10,7 @@ export const dataState = atom({
     key: 'dataState',
     default: []
 })
+export const expenditureTypeState = atom({
+    key: 'expenditureTypeState',
+    default: "month"
+})

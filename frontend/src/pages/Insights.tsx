@@ -12,15 +12,10 @@ const Insights = () => {
     const MonthLength = [31,28,31,30,31,30,31,31,30,31,30,31];
     const [data] = useRecoilState(dataState);
     console.log(month)
-    const monthlyExpenditure = data.filter((item:ResponseType)=>( ((parseInt(item.date.slice(6,8)) === month+1) && 
-                                                                   (parseInt(item.date.slice(8,10)) <= day)) ||
-                                                                   ((parseInt(item.date.slice(6,8)) === month) &&
-                                                                   (parseInt(item.date.slice(8,10)) >= day))) )
-    console.log(monthlyExpenditure)
     let tempMonth = month + 1
     let tempDay = day
     let LineChartData:Maps = new Map()
-    while(tempMonth>=month || (tempMonth === month && day >= tempDay)){
+    while(tempMonth>=month-1 || (tempMonth === month-1 && day >= tempDay)){
         let tempSpend = 0;
         data.forEach((item:ResponseType)=>{
             if((parseInt(item.date.slice(8,10)) === tempDay) && 
@@ -41,7 +36,7 @@ const Insights = () => {
   return (
     <div className="bg-black min-h-screen flex flex-col items-center">
         <Navbar />
-        <div className="h-[600px] w-[70%] mx-auto mt-[20vh] border">
+        <div className="h-auto xl:h-[600px] w-[70%] mx-auto mt-[20vh] border">
         <LineChart LineChartData={LineChartData} />
         </div>
     </div>

@@ -44,16 +44,16 @@ const PieCharts = ({values,title}:PiePros) => {
     };
     
   return (
-    <div className="text-white mt-[17vh] flex flex-col gap-6 border rounded-md p-6 ">
+    <div className="">
         <div className="w-[450px]  h-[450px]">
         {
           values.Earn === 0 && values.Spend === 0?
-          <div>NO SPEND OR EARNING TODAY</div>:
+          <div className='text-center pt-[40%]'>NO SPEND OR EARNING TODAY</div>:
           <Doughnut data={data}  /> 
         }
         </div>
         <div>
-            <h1 className="text-center">{title}</h1>
+            <h1 className="text-center uppercase">{title}</h1>
         </div>
     
     </div>

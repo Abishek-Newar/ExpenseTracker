@@ -63,7 +63,7 @@ function LabeledInput({type,placeholder,id,onChange}:labelType){
       <h1 className="text-lg font-semibold text-white">{id}</h1>
       <input
       className="w-full h-9 rounded-lg border px-4"
-       type={type} placeholder={placeholder} id={id} onChange={onChange} required />
+       type={type} placeholder={placeholder} id={id} onChange={onChange} required={true} />
        
     </label>
   )
@@ -71,7 +71,7 @@ function LabeledInput({type,placeholder,id,onChange}:labelType){
 
 function Button({name,onClick}:ButtonType){
   return <>
-  <button onClick={onClick} type="submit" className="h-10 bg-white text-black rounded-lg font-bold text-xl">{name}</button>
+  <button  onClick={onClick} type="submit" className="h-10 bg-white text-black rounded-lg font-bold text-xl">{name}</button>
   </>
 }
 export default Auth
