@@ -26,22 +26,7 @@ const PieCharts = ({values,title}:PiePros) => {
             },
         ],
     }
-    const options = {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: {
-          title:{
-              display: true,
-              text: "Monthly-Expenditure (Doughnut Chart)",
-          },
-        legend: {
-          display: true, // Set to false to disable the legend
-          position: 'bottom',
-        },
-        
-        
-      },
-    };
+
     
   return (
     <div className="">

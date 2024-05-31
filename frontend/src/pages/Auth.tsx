@@ -1,8 +1,8 @@
-import {  useState } from "react"
-import {  ButtonType, labelType } from "../types";
 import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
+import { ButtonType, labelType } from "../types";
 
 const Auth = () => {
   const navigate = useNavigate()
