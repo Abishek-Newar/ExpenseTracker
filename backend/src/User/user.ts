@@ -8,8 +8,8 @@ require("dotenv").config();
 const userRouter = express.Router();
 const Secret:string  = process.env.SECRET || ''
 const validation = zod.object({
-  name: zod.string(),
-  email: zod.string(),
+  name: zod.string().min(1),
+  email: zod.string().email(),
   password: zod.string().min(6),
 });
 
@@ -17,9 +17,8 @@ const validation = zod.object({
 userRouter.post("/signup", async (req, res) => {
   const body = req.body;
   const valid = validation.safeParse(body);
-
   if (!valid.success) {
-    res.status(403).json({ msg: "invalid data" });
+    return res.status(403).json({ msg: "invalid data" });
   }
 
   const salt = await bcrypt.genSalt(6);
@@ -35,7 +34,7 @@ userRouter.post("/signup", async (req, res) => {
 
   try {
     const response = await User.create({
-      name: body.username,
+      name: body.name,
       email: body.email,
       password: securePass,
     });
@@ -52,9 +51,13 @@ userRouter.post("/signup", async (req, res) => {
 });
 
 //for Signin
+const validationSignin = zod.object({
+  email: zod.string().email(),
+  password: zod.string().min(6),
+});
 userRouter.post("/signin", async (req, res) => {
   const body = req.body;
-  const valid = validation.safeParse(body);
+  const valid = validationSignin.safeParse(body);
 
   if (!valid.success) {
     return res.status(403).json({ msg: "invalid data" });

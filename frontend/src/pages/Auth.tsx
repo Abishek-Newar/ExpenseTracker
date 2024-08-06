@@ -16,7 +16,7 @@ const Auth = () => {
     e.preventDefault()
     try {
       const response = await axios.post(`http://localhost:3000/user/${type}`,formData)
-      toast.success('Login Sucessfull')
+      toast.success(`${type} Sucessfull`)
       localStorage.setItem("token",response.data.token)
       setTimeout(() => {
         navigate("/landing")
